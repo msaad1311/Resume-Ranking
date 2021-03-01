@@ -1,3 +1,4 @@
+let chartSize = 500
 const myChart = new EasyPieChart(document.querySelector('.chart'), {
 
     barColor: '#ef1e25',
@@ -10,7 +11,9 @@ const myChart = new EasyPieChart(document.querySelector('.chart'), {
     // Width of the bar line in px.
     lineWidth: 3,
     // Size of the pie chart in px. It will always be a square.
-    size: 110,
+    size: chartSize,
     // Time in milliseconds for a eased animation of the bar growing, or false to deactivate.
     animate: 1000,
 });
+
+

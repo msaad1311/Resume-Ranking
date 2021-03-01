@@ -19,7 +19,7 @@ def similarity(cv,jd):
     matchPercentage = an.cosine_similarity(countMatrix)[0][1]*100
     print(f'The similarity between the resume and JD is {round(matchPercentage,2)}%')
     
-    return
+    return matchPercentage
 
 def keywordsDetector(cv,jd):
     matcher = an.PhraseMatcher(nlp.vocab)
@@ -46,25 +46,28 @@ def home():
         os.remove('tempCV.pdf')
     except:
         pass
-    return render_template('index.html')
+    return render_template('home.html')
 
 @app.route('/analysis',methods=['POST','GET'])
 def analysis():
     cvsText = fileReader('cv','tempCV.pdf')
     jobsText = fileReader('jd','JD.pdf')
     
-    similarity(cvsText,jobsText)
+    percentage = similarity(cvsText,jobsText)
     matchedKeys,compList = keywordsDetector(cvsText,jobsText)
     matchedKeys = sorted(matchedKeys.items(),key=lambda x:x[1],reverse=True)
     matchedKeys = {k:v for k,v in matchedKeys}
     matchedKeys = [*matchedKeys]
     matchedKeysFinal = matchedKeys[:5] if len(matchedKeys)>5 else matchedKeys
-    print(matchedKeys)
+    print(matchedKeysFinal)
     
     missedWords = missKeywords(compList,matchedKeys)
     print(f'the missing words are {missedWords}')
     
-    return 'hello world'
+    return render_template('result.html',
+                           percentage = round(percentage),
+                           matchKeywords=matchedKeysFinal,
+                           missedKeywords =missedWords[:5])
 
 if __name__ == '__main__':
     app.run(debug=True)

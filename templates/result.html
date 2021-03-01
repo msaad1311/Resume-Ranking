@@ -1,0 +1,22 @@
+{%extends 'base.html'%} {%block content%}
+<div class="chart" data-percent="{{percentage}}" id="easy-pie-chart">
+  <span class="percent">{{percentage}}</span>
+</div>
+
+<div>
+    <h1>hello</h1>
+    {%for matched in matchKeywords%}
+        <span class="label label-success">{{matched}}</span>
+    {%endfor%}
+</div>
+
+<div>
+    <h2>missed keywords</h2>
+    {%for missed in missedKeywords%}
+        <span class="label label-danger">{{missed}}</span>
+    {%endfor%}
+</div>
+{%endblock%} {%block scripts%}
+<script src="../static/js/easypiechart.js"></script>
+<script src="../static/js/app.js"></script>
+{%endblock%}
