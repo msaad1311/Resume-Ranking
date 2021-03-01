@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <script src="dist/easypiechart.js"></script>
+
     <title>Resume Ranking</title>
 </head>
 <body>
@@ -36,6 +38,26 @@
            <button type="submit" class="btn btn-primary">Submit</button>
          </form>
      </div> 
+     <div class="chart" data-percent="73">73%</div>
+     <script src="static/js/easypiechart.js"></script>
+      <script>
+          const myChart = new EasyPieChart(document.querySelector('.chart'), {
+
+            barColor: '#ef1e25',
+            // The color of the track for the bar, false to disable rendering.
+            trackColor: '#f2f2f2',
+            // The color of the scale lines, false to disable rendering.
+            scaleColor: '#dfe0e0',
+            // Defines how the ending of the bar line looks like. Possible values are: butt, round and square.
+            lineCap: 'round',
+            // Width of the bar line in px.
+            lineWidth: 3,
+            // Size of the pie chart in px. It will always be a square.
+            size: 110,
+            // Time in milliseconds for a eased animation of the bar growing, or false to deactivate.
+            animate: 1000,
+            });
+      </script>
 </body>
 </html>
    
