@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="col-md-6 offset-md-3 mt-5">
-         <form accept-charset="UTF-8" action="{{url_for('analysis')}}" method="POST"  target="_blank">
+         <form accept-charset="UTF-8" action="{{url_for('analysis')}}" method="POST"  target="_blank" enctype="multipart/form-data">
            <div class="form-group">
              <label for="exampleInputName">Full Name</label>
              <input type="text" name="fullname" class="form-control" id="exampleInputName" placeholder="Enter your name and surname" required="required">
